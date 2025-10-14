@@ -12,3 +12,7 @@ const request = dictionaryApi + word;
 
 
 console.log(request);
+
+
+
+
