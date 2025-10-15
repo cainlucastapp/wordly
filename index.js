@@ -1,8 +1,10 @@
 //API: https://api.dictionaryapi.dev/api/v2/entries/en/<word>
 //As an example, to get definition of English word hello, you can send request to
 //https://api.dictionaryapi.dev/api/v2/entries/en/hello 
-const dictionaryApi = "https://api.dictionaryapi.dev/api/v2/entries/en/";
+//const dictionaryApi = "https://api.dictionaryapi.dev/api/v2/entries/en/";
 
+
+const dictionaryApi = "https://freedictionaryapi.com/api/v1/entries/en/";
 
 //Form elements
 const wordInput = document.getElementById("word-input");
@@ -38,16 +40,16 @@ async function fetchWord(wordInput) {
         const response = await fetch(dictionaryApi + wordInput);
         const data = await response.json();
         //Pass json data to buildElement
-        buildElements(data[0]);
-        console.log(data); //for testing
+        buildElements(data);
+       
         //Return word from data
-        const word = data[0]; 
-        console.log(word.word); //for testing
-        return word.word;
+        const word = data.word; 
+        console.log(word); //for testing
+        //return word.word;
     } catch (error) {
        //console.error('Error fetching post data:', error); //for testing
        //Show error in #message
-       message.textContent = "Word Not In Dictionary";
+       // message.textContent = "Word Not In Dictionary";
     }
 }
 
