@@ -27,16 +27,15 @@ const dictionaryApi = "https://api.dictionaryapi.dev/api/v2/entries/en/";
     //API Request
     //Fetch Request
         //then if ok return json if not ok throw error
-        //then build elements
+        //data = result.json
+        //function buildElements(data)
         //catch errors
     //end
 //end
 
 
-
-
-
-    //Displaying pronunciation, definitions, and synonyms.
+//function buildElements(data)
+    //Loop for Displaying pronunciation, definitions, and synonyms.
     //Providing audio playback for pronunciation.
-
+//end
 

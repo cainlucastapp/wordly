@@ -6,44 +6,64 @@ const dictionaryApi = "https://api.dictionaryapi.dev/api/v2/entries/en/";
 
 //Form elements
 const wordInput = document.getElementById("word-input");
+const word = document.getElementById("word");
+//const definition = document.getElementById("definition");
+const message = document.getElementById("message");
 //Submit Button
 const fetchDefinition = document.getElementById("fetch-definition");
 
 
-//Submit form
-fetchDefinition.addEventListener("click", () => {
-    //Get form value
-    const word = wordInput.value;
-    //Fetch weather alerts
-    fetchWord(word);
-    //Clear the input field after submit
-    wordInput.value = "";
-});
+document.addEventListener("DOMContentLoaded", () => {
+    //Submit form
+    fetchDefinition.addEventListener("click", (event) => {
+        //Prevent reload
+        event.preventDefault();
+        //Get form value
+        const word = wordInput.value;
+        //Fetch weather alerts
+        fetchWord(word);
+        //Clear the input field after submit
+        wordInput.value = "";
+        //Waiting message
+        message.textContent = "Looking Up Word";
+    });
+})
 
 
 //Fetch word
 async function fetchWord(wordInput) {
-    //API Request
-    const request = dictionaryApi + wordInput
-
     //fetch
     try {
         //API request
         const response = await fetch(dictionaryApi + wordInput);
         const data = await response.json();
-        console.log(data); 
-        const entry = data[0]; 
-        console.log(entry.word); 
-        return entry.word;
+        //Pass json data to buildElement
+        buildElements(data[0]);
+        console.log(data); //for testing
+        //Return word from data
+        const word = data[0]; 
+        console.log(word.word); //for testing
+        return word.word;
     } catch (error) {
-        console.error('Error fetching post data:', error);
+       //console.error('Error fetching post data:', error); //for testing
+       //Show error in #message
+       message.textContent = "Word Not In Dictionary";
     }
-
 }
 
+
+//buildElements into DOM
+function buildElements(data) {
+    console.log(data); //for testing
+    //Clear message
+    message.textContent = "";
+    //Display word
+    word.textContent = data.word
+    //LOOP FOR STUFF (WORK IN PROGRESS)
+}
 
 
 // Export for testing
 if (typeof module !== 'undefined' && module.exports) {
-  module.exports = { fetchWord };
+  module.exports = { fetchWord,buildElements };
 }
