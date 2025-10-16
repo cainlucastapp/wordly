@@ -31,9 +31,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
 //Clear page of dynamic elements
 function clearPage() {
-    //Clear #message
+    //#message
     message.textContent = "";
+    //#word
     word.textContent = "";
+    //#definition
     definition.textContent = "";
 }
 
@@ -43,9 +45,9 @@ async function fetchWord(wordInput) {
     //fetch
     try {
         //API request
-        const responses = await fetch(dictionaryApi + wordInput);
+        const response = await fetch(dictionaryApi + wordInput);
         //Convert repsones to JSON
-        const data = await responses.json();
+        const data = await response.json();
         //Pass json data to buildElement
         buildElements(data);
     } catch (error) {
@@ -57,7 +59,7 @@ async function fetchWord(wordInput) {
 
 //buildElements into DOM
 function buildElements(data) {
-    //console.log(data); //for testing
+    console.log(data); //for testing
     //Display word
     word.textContent = data.word
     //LOOP FOR DISPLAYING STUFF (WORK IN PROGRESS)
