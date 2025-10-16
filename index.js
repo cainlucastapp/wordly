@@ -7,26 +7,21 @@ const wordInput = document.getElementById("word-input");
 const word = document.getElementById("word");
 const definition = document.getElementById("definition");
 const message = document.getElementById("message");
-
-
-//Submit Button
 const fetchDefinition = document.getElementById("fetch-definition");
 
+
+//Submit button
+function onClick() {
+  const word = wordInput.value;
+  fetchWord(word);
+  wordInput.value = "";
+  message.textContent = "Looking Up Word";
+}
+
+//Submit event listener
 document.addEventListener("DOMContentLoaded", () => {
-    //Submit form
-    fetchDefinition.addEventListener("click", (event) => {
-        //Clear page
-        clearPage()
-        //Get form value
-        const word = wordInput.value;
-        //Fetch weather alerts
-        fetchWord(word);
-        //Clear the input field after submit
-        wordInput.value = "";
-        //Waiting message
-        word.textContent = "Looking Up Word";
-    });
-})
+  fetchDefinition.addEventListener("click", onClick);
+});
 
 
 //Clear page of dynamic elements
@@ -68,5 +63,5 @@ function buildElements(data) {
 
 // Export for testing
 if (typeof module !== 'undefined' && module.exports) {
-  module.exports = { fetchWord,buildElements };
+  module.exports = { onClick ,clearPage, fetchWord, buildElements };
 }
