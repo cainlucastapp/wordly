@@ -1,25 +1,22 @@
-//API: https://api.dictionaryapi.dev/api/v2/entries/en/<word>
-//As an example, to get definition of English word hello, you can send request to
-//https://api.dictionaryapi.dev/api/v2/entries/en/hello 
-//const dictionaryApi = "https://api.dictionaryapi.dev/api/v2/entries/en/";
-
-
+//API https://freedictionaryapi.com/api/v1/entries/en/ <wordInput>
 const dictionaryApi = "https://freedictionaryapi.com/api/v1/entries/en/";
+
 
 //Form elements
 const wordInput = document.getElementById("word-input");
 const word = document.getElementById("word");
-//const definition = document.getElementById("definition");
+const definition = document.getElementById("definition");
 const message = document.getElementById("message");
+
+
 //Submit Button
 const fetchDefinition = document.getElementById("fetch-definition");
-
 
 document.addEventListener("DOMContentLoaded", () => {
     //Submit form
     fetchDefinition.addEventListener("click", (event) => {
-        //Prevent reload
-        event.preventDefault();
+        //Clear page
+        clearPage()
         //Get form value
         const word = wordInput.value;
         //Fetch weather alerts
@@ -27,9 +24,18 @@ document.addEventListener("DOMContentLoaded", () => {
         //Clear the input field after submit
         wordInput.value = "";
         //Waiting message
-        message.textContent = "Looking Up Word";
+        word.textContent = "Looking Up Word";
     });
 })
+
+
+//Clear page of dynamic elements
+function clearPage() {
+    //Clear #message
+    message.textContent = "";
+    word.textContent = "";
+    definition.textContent = "";
+}
 
 
 //Fetch word
@@ -37,31 +43,24 @@ async function fetchWord(wordInput) {
     //fetch
     try {
         //API request
-        const response = await fetch(dictionaryApi + wordInput);
-        const data = await response.json();
+        const responses = await fetch(dictionaryApi + wordInput);
+        //Convert repsones to JSON
+        const data = await responses.json();
         //Pass json data to buildElement
         buildElements(data);
-       
-        //Return word from data
-        const word = data.word; 
-        console.log(word); //for testing
-        //return word.word;
     } catch (error) {
-       //console.error('Error fetching post data:', error); //for testing
        //Show error in #message
-       // message.textContent = "Word Not In Dictionary";
+       message.textContent = "Please give me a word to look up.";
     }
 }
 
 
 //buildElements into DOM
 function buildElements(data) {
-    console.log(data); //for testing
-    //Clear message
-    message.textContent = "";
+    //console.log(data); //for testing
     //Display word
     word.textContent = data.word
-    //LOOP FOR STUFF (WORK IN PROGRESS)
+    //LOOP FOR DISPLAYING STUFF (WORK IN PROGRESS)
 }
 
 

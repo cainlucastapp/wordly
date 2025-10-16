@@ -39,3 +39,5 @@ const dictionaryApi = "https://api.dictionaryapi.dev/api/v2/entries/en/";
     //Providing audio playback for pronunciation.
 //end
 
+
+//Need Word validation
