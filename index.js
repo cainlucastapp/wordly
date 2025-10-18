@@ -11,42 +11,27 @@ const fetchDefinition = document.getElementById("fetch-definition");
 
 
 //Submit button
-function onClick() {
-  const word = wordInput.value;
-  fetchWord(word);
-  wordInput.value = "";
-  message.textContent = "Looking Up Word";
-}
-
-//Submit event listener
 document.addEventListener("DOMContentLoaded", () => {
-  fetchDefinition.addEventListener("click", onClick);
+  fetchDefinition.addEventListener("click", () => fetchWord(wordInput));
 });
-
-
-//Clear page of dynamic elements
-function clearPage() {
-    //#message
-    message.textContent = "";
-    //#word
-    word.textContent = "";
-    //#definition
-    definition.textContent = "";
-}
 
 
 //Fetch word
 async function fetchWord(wordInput) {
+    //Waiting message
+    message.textContent = "Looking Up Word";  
+    //Word
+    const word = wordInput.value;
     //fetch
     try {
         //API request
-        const response = await fetch(dictionaryApi + wordInput);
+        const response = await fetch(dictionaryApi + word);
         //Convert repsones to JSON
         const data = await response.json();
         //Pass json data to buildElement
         buildElements(data);
     } catch (error) {
-       //Show error in #message
+       //Null error message
        message.textContent = "Please give me a word to look up.";
     }
 }
@@ -55,13 +40,24 @@ async function fetchWord(wordInput) {
 //buildElements into DOM
 function buildElements(data) {
     console.log(data); //for testing
+    
+    //Clear page of dynamic elements
+    wordInput.value = "";
+    word.textContent = "";
+    definition.textContent = "";
+    
     //Display word
     word.textContent = data.word
-    //LOOP FOR DISPLAYING STUFF (WORK IN PROGRESS)
+    
+    //LOOPS THOUGH DATA FOR DISPLAYING STUFF (WORK IN PROGRESS) USE INNER HTML
+
+    //Remove waiting message
+    message.textContent = "";
 }
 
 
 // Export for testing
 if (typeof module !== 'undefined' && module.exports) {
-  module.exports = { onClick ,clearPage, fetchWord, buildElements };
+  module.exports = { fetchWord, buildElements };
 }
+

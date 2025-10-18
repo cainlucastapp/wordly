@@ -37,31 +37,8 @@ buildGlobals();
 
 
 //Import functions
-const { onClick, clearPage, fetchWord, buildElements } = require('../index.js');
+const { fetchWord, buildElements } = require('../index.js');
 
 
 //Attach click handler
 document.dispatchEvent(new Event('DOMContentLoaded'));
-
-
-//onClick function
-describe("onClick()", () => {
-  // reset just values per test (no DOM rebuild, no re-require)
-  beforeEach(() => {
-    wordInput.value = "hello";
-    message.textContent = "";
-  });
-
-  test("clears input and shows waiting message", () => {
-    onClick();
-    expect(wordInput.value).toBe("");                 // input cleared
-    expect(message.textContent).toBe("Looking Up Word"); // status set
-  });
-
-  test("reads 'hello' from input (verified via fetch URL)", () => {
-    // keep fetch from resolving to avoid races with buildElements
-    global.fetch = jest.fn(() => new Promise(() => {}));
-    onClick();
-    expect(fetch).toHaveBeenCalledWith("https://freedictionaryapi.com/api/v1/entries/en/hello");
-  });
-});
