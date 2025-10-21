@@ -94,7 +94,7 @@ function buildElements(data) {
     //Display definition, synonyms, antonyms
     let definitionHTML = `
       <div class="definition">
-        <p>Definition<span class="capitalize">(${partOfSpeech})</span>: ${sense?.definition || "No definition available."}</p>
+        <p>Definition<span class="capitalize"> (${partOfSpeech})</span>: ${sense?.definition || "No definition available."}</p>
         <p class="capitalize">Synonyms: ${synonyms}</p>
         <p class="capitalize">Antonyms: ${antonyms}</p>
       </div>
@@ -106,7 +106,7 @@ function buildElements(data) {
   const source = data.source.url
   const license = data.source.license.name
   let sourceHTML = `
-    <p><a href="${source}" target="_blank" rel="noopener noreferrer">${source}</a></p>
+    <p>Source: <a href="${source}" target="_blank" rel="noopener noreferrer">${source}</a></p>
     <p>License: ${license}</p>
   `;
   sourceElement.innerHTML = sourceHTML;
