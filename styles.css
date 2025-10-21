@@ -15,7 +15,7 @@ body {
 }
 
 
-h1 {
+.flashy-title {
     font-weight: 700;
     margin-bottom: 1rem;
     background: linear-gradient(90deg, #5c7cfa, #91a7ff, #5c7cfa);
@@ -26,9 +26,10 @@ h1 {
 }
 
 
-@keyframes shimmer {
-    0% { background-position: 0%; }
-    100% { background-position: 200%; }
+#message {
+  text-align: center;
+  font-size: 1rem;
+  font-weight: 500;
 }
 
 
