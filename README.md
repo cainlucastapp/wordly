@@ -16,13 +16,13 @@ Wordly is a simple and elegant dictionary web app built with vanilla JavaScript,
 
 ## Tech Stack
 
-HTML5 
-CSS3
-JavaScript
-Free Dictionary API
+- HTML5 
+- CSS3
+- JavaScript
+- Free Dictionary API
 
 ---
 
 ## Usage
-Clone repository
-Open wordly/index.html in your browser
+- Clone repository
+- Open wordly/index.html in your browser
