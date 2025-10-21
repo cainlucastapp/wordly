@@ -51,10 +51,7 @@ async function fetchWord(wordInput) {
       buildElements(data);
   } catch (error) {
     //Clear page of dynamic elements
-    wordInput.value = "";
-    wordElement.textContent = "";
-    definition.textContent = "";
-    speakButton.classList.add("hidden");
+    clearPage()
     //Error message
     message.textContent = error.message;
   }
@@ -64,9 +61,7 @@ async function fetchWord(wordInput) {
 //buildElements into DOM
 function buildElements(data) {
   //Clear page of dynamic elements
-  wordInput.value = "";
-  wordElement.textContent = "";
-  definition.textContent = "";
+  clearPage()
 
   //Display word & pronunciation
   const displayWord = data.word;
@@ -113,6 +108,15 @@ speakButton.addEventListener("click", () => speakWord(speak));
 function speakWord(speak) {
   const sayWord = new SpeechSynthesisUtterance(speak);
   speechSynthesis.speak(sayWord);
+}
+
+
+//Clear page of dynamic elements
+function clearPage() {
+  wordInput.value = "";
+  wordElement.textContent = "";
+  definition.textContent = "";
+  speakButton.classList.add("hidden");  
 }
 
 
