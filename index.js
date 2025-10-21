@@ -7,7 +7,7 @@ const wordInput = document.getElementById("word-input");
 const wordElement = document.getElementById("word");
 const definition = document.getElementById("definitions");
 const message = document.getElementById("message");
-const fetchDefinition = document.getElementById("fetch-definition");
+const fetchDefinition = document.getElementById("word-form");
 const speakButton = document.getElementById("speak");
 
 
@@ -17,7 +17,10 @@ date.textContent = new Date().getFullYear();
 
 
 //Submit button
-fetchDefinition.addEventListener("click", () => fetchWord(wordInput));
+fetchDefinition.addEventListener('submit', (e) => {
+  e.preventDefault();
+  fetchWord(wordInput);
+});
 
 
 //Delcare speak audio

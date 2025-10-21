@@ -9,6 +9,7 @@ document.body.innerHTML = `
   <div id="word"></div>
   <div id="definitions"></div>
   <div id="message"></div>
+  <form id="word-form"></form>
   <button id="fetch-definition"></button>
   <button id="speak" class="hidden"></button>
   <span id="year"></span>
