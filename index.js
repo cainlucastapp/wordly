@@ -27,12 +27,24 @@ fetchDefinition.addEventListener('submit', (event) => {
 let speak;
 
 
+//Delay helper (skips or shortens delay in tests)
+async function delay(ms) {
+  const isTest =
+    typeof process !== "undefined" &&
+    process.env &&
+    process.env.NODE_ENV === "test";
+
+  if (isTest) return; // skip delay during tests
+  await new Promise(resolve => setTimeout(resolve, ms));
+}
+
+
 //Fetch word
 async function fetchWord(wordInput) {
   //Waiting message
   message.textContent = "Looking Up Word";
-  //500ms delay for UX
-  await new Promise(resolve => setTimeout(resolve, 500));
+  //Apply delay if not testing
+  await delay(500);
   //Word
   const word = wordInput.value.toLowerCase();
   //fetch
