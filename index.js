@@ -69,7 +69,7 @@ function buildElements(data) {
   const displayWord = data.word;
   const pronunciation = data.entries?.[0]?.pronunciations?.[0]?.text || "";
   let wordHTML = `
-    <p>${displayWord} ${pronunciation}</p>
+    <h2>${displayWord} ${pronunciation}</h2>
   `;
   wordElement.innerHTML = wordHTML;
   

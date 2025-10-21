@@ -11,6 +11,7 @@ document.body.innerHTML = `
   <div id="message"></div>
   <button id="fetch-definition"></button>
   <button id="speak" class="hidden"></button>
+  <span id="year"></span>
 `;
 
 const { fetchWord, buildElements } = require('../index.js');
