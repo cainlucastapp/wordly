@@ -138,7 +138,8 @@ function clearPage() {
   wordInput.value = "";
   wordElement.textContent = "";
   definition.textContent = "";
-  speakButton.classList.add("hidden");  
+  speakButton.classList.add("hidden");
+  sourceElement.textContent = "";
 }
 
 
