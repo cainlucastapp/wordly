@@ -25,4 +25,6 @@ Wordly is a simple and elegant dictionary web app built with vanilla JavaScript,
 
 ## Usage
 - Clone repository
-- Open wordly/index.html in your browser
+- cd wordly
+- npm install
+- Open index.html in your browser
