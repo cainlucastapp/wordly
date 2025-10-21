@@ -29,13 +29,16 @@ export default defineConfig([
     languageOptions: { globals: globals.node },
   },
 
-  //tests 
+  // tests 
   {
     files: ["test/**/*.{js,mjs,cjs}", "**/*.test.{js,mjs,cjs}"],
     languageOptions: {
-      globals: { ...globals.jest, ...globals.browser },
+      // add browser so window/document are defined
+      globals: { ...globals.jest, ...globals.node, ...globals.browser },
+      sourceType: "commonjs",
     },
   },
+  
   //ignores
   { ignores: ["node_modules/**", "dist/**", "coverage/**"] },
 ]);

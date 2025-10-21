@@ -71,7 +71,7 @@ describe('DOM tests', () => {
 
 
   it('calls fetch once with the correct API URL when button is clicked', async () => {
-    const { } = globalElements();
+    globalElements();
     await new Promise(resolve => setTimeout(resolve, 0));
     expect(fetchMock).toHaveBeenCalledTimes(1);
     expect(fetchMock).toHaveBeenCalledWith('https://freedictionaryapi.com/api/v1/entries/en/hello');
@@ -110,7 +110,7 @@ describe('DOM tests', () => {
 
 
   it('renders the displayWord "hello" in #word after successful fetch', async () => {
-    const {} = globalElements();
+    globalElements();
 
     await new Promise(resolve => setTimeout(resolve, 0));
 
@@ -120,7 +120,7 @@ describe('DOM tests', () => {
 
 
   it('renders the first pronunciation (/həˈləʊ/) in #word', async () => {
-    const {} = globalElements();
+    globalElements();
     await new Promise(resolve => setTimeout(resolve, 0));
 
     const wordEl = container.querySelector('#word');
@@ -129,7 +129,7 @@ describe('DOM tests', () => {
 
 
   it('displays the primary definition inside #definitions', async () => {
-    const {} = globalElements();
+    globalElements();
     await new Promise(resolve => setTimeout(resolve, 0));
 
     const definitionEl = container.querySelector('#definitions');
@@ -138,7 +138,7 @@ describe('DOM tests', () => {
 
 
   it('shows the Speak button after successful word lookup', async () => {
-    const {} = globalElements();
+    globalElements();
     await new Promise(resolve => setTimeout(resolve, 0));
 
     const speakButton = container.querySelector('#speak');
