@@ -37,13 +37,12 @@ async function delay(ms) {
 }
 
 
-
 //Fetch word
 async function fetchWord(wordInput) {
   //Waiting message
   message.textContent = "Looking Up Word";
   //Apply delay if not testing
-  await delay(600);
+  await delay(500);
   //Word
   const word = wordInput.value.toLowerCase();
   //fetch
