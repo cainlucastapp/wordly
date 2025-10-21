@@ -17,20 +17,22 @@ date.textContent = new Date().getFullYear();
 
 
 //Submit button
-fetchDefinition.addEventListener('submit', (e) => {
-  e.preventDefault();
+fetchDefinition.addEventListener('submit', (event) => {
+  event.preventDefault();
   fetchWord(wordInput);
 });
 
 
-//Delcare speak audio
+//Delcare speak for audio
 let speak;
 
 
 //Fetch word
 async function fetchWord(wordInput) {
   //Waiting message
-  message.textContent = "Looking Up Word";  
+  message.textContent = "Looking Up Word";
+  //500ms delay for UX
+  await new Promise(resolve => setTimeout(resolve, 500));
   //Word
   const word = wordInput.value.toLowerCase();
   //fetch
@@ -124,4 +126,3 @@ function clearPage() {
 if (typeof module !== 'undefined' && module.exports) {
   module.exports = { fetchWord, buildElements };
 }
-
