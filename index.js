@@ -29,12 +29,9 @@ let speak;
 
 //Delay helper (skips or shortens delay in tests)
 async function delay(ms) {
-  const isTest =
-    typeof process !== "undefined" &&
-    process.env &&
-    process.env.NODE_ENV === "test";
-
-  if (isTest) return; // skip delay during tests
+  const isTest = globalThis.process?.env?.NODE_ENV === "test";
+  //Skip delay during tests
+  if (isTest) return;
   await new Promise(resolve => setTimeout(resolve, ms));
 }
 
