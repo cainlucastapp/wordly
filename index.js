@@ -11,6 +11,11 @@ const fetchDefinition = document.getElementById("fetch-definition");
 const speakButton = document.getElementById("speak");
 
 
+//Copyright date
+const date = document.getElementById('year')
+date.textContent = new Date().getFullYear();
+
+
 //Submit button
 fetchDefinition.addEventListener("click", () => fetchWord(wordInput));
 
@@ -62,29 +67,27 @@ function buildElements(data) {
 
   //Display word & pronunciation
   const displayWord = data.word;
-  const pronunciation = data.entries[0].pronunciations[0].text;
+  const pronunciation = data.entries?.[0]?.pronunciations?.[0]?.text || "";
   let wordHTML = `
-    <p>${displayWord} (${pronunciation})
-  `
+    <p>${displayWord} ${pronunciation}</p>
+  `;
   wordElement.innerHTML = wordHTML;
   
   // //Elements loop
   (data.entries || []).forEach(entry => {
     const sense = entry.senses[0];
-    const partOfSpeech = entry.partOfSpeech; 
+    const partOfSpeech = entry.partOfSpeech || "Unknown";
     const synonyms = entry.synonyms?.length ? entry.synonyms.join(", ") : "None.";
     const antonyms = entry.antonyms?.length ? entry.antonyms.join(", ") : "None.";
 
     //Display definition, synonyms, antonyms
     let definitionHTML = `
       <div class="definition">
-
-        <p>Definition<span class="capitalize">(${partOfSpeech})</span>: ${sense.definition}</p>
+        <p>Definition<span class="capitalize">(${partOfSpeech})</span>: ${sense?.definition || "No definition available."}</p>
         <p class="capitalize">Synonyms: ${synonyms}</p>
         <p class="capitalize">Antonyms: ${antonyms}</p>
       </div>
     `;
-
     definition.innerHTML += definitionHTML;
   });
 

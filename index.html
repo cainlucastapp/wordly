@@ -7,14 +7,19 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <h1>Wordly</h1>
-  <div id="form-elements">
-    <input type="text" id="word-input" placeholder="Give me a word...">
-    <button id="fetch-definition">Look It Up</button> <button id="speak" class="hidden">Speak</button> 
+  <div id="wordly">
+    <h1>Wordly</h1>
+    <div id="form-elements">
+      <input type="text" id="word-input" placeholder="Give me a word...">
+      <button id="fetch-definition">Look It Up</button> <button id="speak" class="hidden">Say Word</button> 
+    </div>
+    <div id="message"></div>
+    <div id="word" class="capitalize"></div>
+    <div id="definitions"></div>
   </div>
-  <div id="message"></div>
-  <div id="word" class="capitalize"></div>
-  <div id="definitions"></div>
+  <footer class="copyright">
+    &copy; <span id="year"></span> <a href="/" rel="home">Wordly</a>. All rights reserved.
+  </footer>
   <script src="./index.js"></script>
 </body>
 </html>

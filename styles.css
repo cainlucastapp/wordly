@@ -1,7 +1,71 @@
+body {
+    background: radial-gradient(circle at top, #f5f7fa 0%, #e8ecf3 100%); 
+    font-family: "Inter", sans-serif;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+#wordly {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+
+h1 {
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  color: #222;
+  margin-bottom: 1rem;
+}
+
+
+#form-elements {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1.2rem;
+}
+
+
 .capitalize {
     text-transform: capitalize;
 }
 
+
 .hidden {
     display: none;
+}
+
+.definition {
+    margin: 5px;
+    background: #ffffff;
+    color: #1a1a1a;
+    padding: 1rem;
+    border-radius: 18px;
+    box-shadow:
+    0 2px 4px rgba(0,0,0,0.05),
+    0 8px 20px rgba(0,0,0,0.08);
+    transition: all 0.3s ease;
+    transform: translateY(0);
+}
+
+
+footer.copyright {
+  text-align: center;
+  color: #555;
+  font-size: 0.9rem;
+  padding: 1rem 0;
+}
+
+
+footer.copyright a {
+  color: inherit;
+  text-decoration: none;
+  font-weight: 600;
+  cursor: pointer;
 }
