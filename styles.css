@@ -62,8 +62,8 @@ body {
 
 .definition {
     width: 100%;
-    max-width: 700px;
-    margin: 5px;
+    max-width: 800px;
+    margin: 5px 15px;
     background: #ffffff;
     color: #1a1a1a;
     padding: 1rem;
@@ -87,17 +87,22 @@ body {
 }
 
 
-footer.copyright {
-  text-align: center;
-  color: #555;
-  font-size: 0.9rem;
-  padding: 1rem 0;
+div#source {
+    text-align: center;
 }
 
 
-footer.copyright a {
-  color: inherit;
-  text-decoration: none;
-  font-weight: 600;
-  cursor: pointer;
+footer.copyright {
+    text-align: center;
+    color: #555;
+    font-size: 0.9rem;
+    padding: 1rem 0;
+    font-weight: 600;
+}
+
+
+a {
+    color: inherit;
+    text-decoration: none;
+    cursor: pointer;
 }

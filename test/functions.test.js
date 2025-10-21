@@ -13,6 +13,7 @@ document.body.innerHTML = `
   <button id="fetch-definition"></button>
   <button id="speak" class="hidden"></button>
   <span id="year"></span>
+  <div id="source"></div>
 `;
 
 const { fetchWord, buildElements } = require('../index.js');
@@ -35,6 +36,10 @@ describe('function tests', () => {
   it('buildElements renders elements and shows speak word button', () => {
     const data = {
       word: 'hello',
+      source: {
+      url: 'https://en.wiktionary.org/wiki/hello',
+      license: { name: 'CC BY-SA 4.0', url: 'https://creativecommons.org/licenses/by-sa/4.0/' }
+      },
       entries: [
         {
           partOfSpeech: 'interjection',

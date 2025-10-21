@@ -9,6 +9,7 @@ const definition = document.getElementById("definitions");
 const message = document.getElementById("message");
 const fetchDefinition = document.getElementById("word-form");
 const speakButton = document.getElementById("speak");
+const sourceElement = document.getElementById("source");
 
 
 //Copyright date
@@ -36,12 +37,13 @@ async function delay(ms) {
 }
 
 
+
 //Fetch word
 async function fetchWord(wordInput) {
   //Waiting message
   message.textContent = "Looking Up Word";
   //Apply delay if not testing
-  await delay(500);
+  await delay(600);
   //Word
   const word = wordInput.value.toLowerCase();
   //fetch
@@ -82,7 +84,7 @@ function buildElements(data) {
   `;
   wordElement.innerHTML = wordHTML;
   
-  // //Elements loop
+  //Elements loop
   (data.entries || []).forEach(entry => {
     const sense = entry.senses[0];
     const partOfSpeech = entry.partOfSpeech || "Unknown";
@@ -99,6 +101,15 @@ function buildElements(data) {
     `;
     definition.innerHTML += definitionHTML;
   });
+
+  //Display source
+  const source = data.source.url
+  const license = data.source.license.name
+  let sourceHTML = `
+    <p><a href="${source}" target="_blank" rel="noopener noreferrer">${source}</a></p>
+    <p>License: ${license}</p>
+  `;
+  sourceElement.innerHTML = sourceHTML;
 
   //Clear message
   message.textContent = "";

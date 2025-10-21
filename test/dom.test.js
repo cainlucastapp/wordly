@@ -20,6 +20,10 @@ describe('DOM tests', () => {
     status: 200,
     json: async () => ({
       word: "hello",
+      source: {
+      url: 'https://en.wiktionary.org/wiki/hello',
+      license: { name: 'CC BY-SA 4.0', url: 'https://creativecommons.org/licenses/by-sa/4.0/' }
+      },
       entries: [
         {
           language: { code: "en", name: "English" },
